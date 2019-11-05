@@ -15,6 +15,8 @@ class ApplicationController < Sinatra::Base
     erb :"users/index"
   end
 
+  
+
   #welcome page
   #signin/login
   #task show page have edit / "complete(delete)"

@@ -15,25 +15,35 @@ post "/login" do
     session[:user_id] == @user.id
     redirect "/profile/#{@user.id}"
   else
-    flash[:message] = "The username #{params[:username]} does not exist or is incorrect"
-    redirect '/'
+    flash[:message] = "*The username #{params[:username]} does not exist or is incorrect*"
+    redirect '/login'
   end
 end
 
 get "/signup" do
-erb :"users/signup"
+  if logged_in?
+      redirect "/profile/#{@user.id}"
+  else
+  erb :"users/signup"
+  end
 end
 
 post '/signup' do
-   params.each do |att|
+   params.each do |k, att|
      if att.empty?
-       flash[:message] = "#{att} field was empty"
+       flash[:message] = "*#{k.upcase} field required*"
        redirect '/signup'
      end
    end
-       user = User.create(params)
-       user.save
-      redirect "/profile/#{user.id}"
+     if User.find_by(username: params[:username])
+       flash[:message] = "* Username not available*"
+       redirect '/signup'
+     else
+       @user = User.create(params)
+       session[:user_id] = @user.id
+       @user.save
+      redirect "/profile/#{@user.id}"
+    end
 end
 
 get '/profile/:id' do
@@ -41,6 +51,10 @@ get '/profile/:id' do
   erb :"users/profile"
 end
 
+get "/logout" do
+  session.clear
+  redirect '/'
+end
 
 
 end

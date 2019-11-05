@@ -15,7 +15,7 @@ class ApplicationController < Sinatra::Base
     erb :"users/index"
   end
 
-  
+
 
   #welcome page
   #signin/login
@@ -31,7 +31,6 @@ class ApplicationController < Sinatra::Base
       @user = User.find(session[:user_id])
     end
 
-  end
   end
 
 end

@@ -1,3 +1,8 @@
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
+
 <h1> New Task </h1>
 
   <form method="post" action="/new">
@@ -8,4 +13,4 @@
     <input type="submit" id="submit" value="Create">
   </form>
 
-  
+<a href="/login"> Cancel </a>

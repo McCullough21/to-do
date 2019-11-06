@@ -11,8 +11,7 @@ class TasksController < ApplicationController
      flash[:message] = "* Task must have a title *"
      redirect '/new'
    else
-   @task = Task.create(params)
-   @task.user_id = @user.id
+   @task = Task.create(title: params[:title], content: params[:content], :user_id => @user.id)
    @task.save
    redirect "/profile/#{@user.id}"
    end

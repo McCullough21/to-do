@@ -2,7 +2,11 @@ class TasksController < ApplicationController
 
 
  get '/new' do
+   if !logged_in?
+     redirect '/login'
+   else
    erb :"tasks/create"
+   end
  end
 
  post '/new' do

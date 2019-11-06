@@ -12,7 +12,7 @@ post "/login" do
   @user = User.find_by(username: params[:username])
 
   if @user && @user.authenticate(params[:password])
-    session[:user_id] == @user.id
+    session[:user_id] = @user.id
     redirect "/profile/#{@user.id}"
   else
     flash[:message] = "*The username #{params[:username]} does not exist or is incorrect*"

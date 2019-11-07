@@ -1,0 +1,19 @@
+<h1> Edit <%=@task.title%> </h1>
+
+  <form method="post" action="/task/<%=@task.id%>">
+    <input id="hidden" type="hidden" name="_method" value="patch">
+    <label for="task_title"> Title: <br> <%=@task.title%> </label>
+    <br>
+    <input type="text" id="task_title" name="title">
+    <br>
+    <br>
+    <label for="content"> Description:<br> <%= @task.content %></label>
+    <br>
+    <input type="text" id="content" name="content">
+    <br>
+    <br>
+    <input type="submit" id="submit" value="Update">
+  </form>
+  <br>
+
+  <a href="/profile/<%=@task.user_id%>"> Cancel </a>

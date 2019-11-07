@@ -22,9 +22,17 @@ class TasksController < ApplicationController
  end
 
   get '/task/:id/edit' do
-    @task = Task.find(params[:id])*********
-    if current_user.id == @task.user_id
+    if !logged_in?
+      redirect '/login'
+    end
+    @task = Task.find(params[:id])
+    if current_user.id != @task.user_id
+      redirect "/profile/#{current_user.id}"
+    else
+      erb :"tasks/edit"
+    end
   end
+  
  get '/tasks/:id' do
    @task = Task.find(params[:id])
    erb :"tasks/show"

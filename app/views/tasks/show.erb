@@ -1,3 +1,6 @@
-<%= @task.title %>
+<h1><%= @task.title %></h1>
+<br>
 
-  <%= @task.content %>
+  <h3><%= @task.content %></h3>
+
+<a href="/profile/<%=@task.user_id%>"> Back </a>

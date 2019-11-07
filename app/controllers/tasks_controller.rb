@@ -21,6 +21,10 @@ class TasksController < ApplicationController
    end
  end
 
+  get '/task/:id/edit' do
+    @task = Task.find(params[:id])*********
+    if current_user.id == @task.user_id
+  end
  get '/tasks/:id' do
    @task = Task.find(params[:id])
    erb :"tasks/show"

@@ -1,15 +1,17 @@
-<h1> Edit <%=@task.title%> </h1>
+<% if flash.has?(:message) %>
+  <%= flash[:message] %>
+<% end %>
+
+<h1> Edit task: <%=@task.title%> </h1>
 
   <form method="post" action="/tasks/<%=@task.id%>">
     <input id="hidden" type="hidden" name="_method" value="patch">
-    <label for="task_title"> Title: <br> <%=@task.title%> </label>
-    <br>
-    <input type="text" id="task_title" name="title">
+    
     <br>
     <br>
-    <label for="content"> Description:<br> <%= @task.content %></label>
+    <label for="content"> Description:<br> </label>
     <br>
-    <input type="text" id="content" name="content">
+    <input type="text" id="content" name="content" value="<%= @task.content %>">
     <br>
     <br>
     <input type="submit" id="submit" value="Update">

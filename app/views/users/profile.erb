@@ -3,7 +3,8 @@
   <h2> Task list: </h2>
   <% @user.tasks.each do |task|%>
   <ul>
-    <li><a href="/tasks/<%= task.id %>"><%= task.title %></a></li>
+    <li><a href="/tasks/<%= task.id %>"><%= task.title %>:</a><br>
+      <p style="text-indent: 10px"><%=task.content%></p></li>
   </ul>
  <% end %>
 

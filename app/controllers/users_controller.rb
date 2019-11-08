@@ -15,7 +15,7 @@ post "/login" do
     session[:user_id] = @user.id
     redirect "/profile/#{@user.id}"
   else
-    flash[:message] = "*The username #{params[:username]} does not exist or is incorrect*"
+    flash[:message] = "*The username/password (#{params[:username]}), does not exist or is incorrect*"
     redirect '/login'
   end
 end

@@ -6,7 +6,7 @@
 
   <form method="post" action="/tasks/<%=@task.id%>">
     <input id="hidden" type="hidden" name="_method" value="patch">
-    
+
     <br>
     <br>
     <label for="content"> Description:<br> </label>
@@ -19,3 +19,5 @@
   <br>
 
   <a href="/profile/<%=@task.user_id%>"> Cancel </a>
+  <br>
+  <a href="/delete/<%=@task.id%>"> Delete Task </a>

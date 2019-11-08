@@ -1,9 +1,12 @@
-<h1>Title:</h1>
+<h2>Title:</h2>
 <h2><%= @task.title %></h2>
 <br>
-<h1>Description:</h1>
+<h2>Description:</h2>
   <h3><%= @task.content %></h3>
 
 <a href="/profile/<%=@task.user_id%>"> Back </a>
 <br>
 <a href="/tasks/<%=@task.id%>/edit"> Edit </a>
+<br>
+<br>
+<a href="/delete/<%=@task.id%>"> Delete Task </a>

@@ -40,13 +40,15 @@ class TasksController < ApplicationController
 
  patch '/tasks/:id' do
    @task = Task.find(params[:id])
-  if params[:title].empty?
-     flash[:message] = "* Task must have a title *"
-     redirect "/tasks/#{@task.id}/edit"
-  end
-    @task.update(title: params[:title], content: params[:content])
+    @task.update(content: params[:content])
     @task.save
     redirect "/profile/#{@task.user_id}"
+ end
+
+ get '/delete/:id' do
+   @task = Task.find(params[:id])
+   @task.delete
+   redirect "/profile/#{current_user.id}"
  end
 
 

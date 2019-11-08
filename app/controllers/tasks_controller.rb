@@ -21,7 +21,7 @@ class TasksController < ApplicationController
    end
  end
 
-  get '/task/:id/edit' do
+  get '/tasks/:id/edit' do
     if !logged_in?
       redirect '/login'
     end
@@ -32,10 +32,21 @@ class TasksController < ApplicationController
       erb :"tasks/edit"
     end
   end
-  
+
  get '/tasks/:id' do
    @task = Task.find(params[:id])
    erb :"tasks/show"
+ end
+
+ patch '/tasks/:id' do
+   @task = Task.find(params[:id])
+  if params[:title].empty?
+     flash[:message] = "* Task must have a title *"
+     redirect "/tasks/#{@task.id}/edit"
+  end
+    @task.update(title: params[:title], content: params[:content])
+    @task.save
+    redirect "/profile/#{@task.user_id}"
  end
 
 

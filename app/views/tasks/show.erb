@@ -1,7 +1,9 @@
-<h1><%= @task.title %></h1>
+<h1>Title:</h1>
+<h2><%= @task.title %></h2>
 <br>
+<h1>Description:</h1>
   <h3><%= @task.content %></h3>
 
 <a href="/profile/<%=@task.user_id%>"> Back </a>
 <br>
-<a href="/task/<%=@task.id%>/edit"> Edit </a>
+<a href="/tasks/<%=@task.id%>/edit"> Edit </a>

@@ -47,8 +47,14 @@ post '/signup' do
 end
 
 get '/profile/:id' do
-  @user = User.find(params[:id])
+
+  if current_user != User.find(params[:id])
+    redirect "/profile/#{current_user.id}"
+    
+  else
+    @user = User.find(params[:id])
   erb :"users/profile"
+  end
 end
 
 get "/logout" do

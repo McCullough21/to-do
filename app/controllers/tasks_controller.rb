@@ -35,7 +35,11 @@ class TasksController < ApplicationController
 
  get '/tasks/:id' do
    @task = Task.find(params[:id])
+   if current_user.id != @task.user_id
+     redirect "/profile/#{current_user.id}"
+   else
    erb :"tasks/show"
+   end
  end
 
  patch '/tasks/:id' do
@@ -47,8 +51,12 @@ class TasksController < ApplicationController
 
  get '/delete/:id' do
    @task = Task.find(params[:id])
+   if current_user.id != @task.user_id
+     redirect "/profile/#{current_user.id}"
+   else
    @task.delete
    redirect "/profile/#{current_user.id}"
+   end
  end
 
 

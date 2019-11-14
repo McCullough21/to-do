@@ -21,11 +21,7 @@ class ApplicationController < Sinatra::Base
 
 
 
-  #welcome page
-  #signin/login
-  #task show page have edit / "complete(delete)"
-  #profile with add or delete(check mark) task or edit a task
-  #logout
+  
   helpers do
     def logged_in?
       !!current_user
